@@ -100,7 +100,7 @@ static inline dispatch_queue_t YYImageCacheDecodeQueue() {
     memoryCache.costLimit = NSUIntegerMax;
     memoryCache.ageLimit = 12 * 60 * 60;
     
-    YYDiskCache *diskCache = [[YYDiskCache alloc] initWithPath:path];
+    YYDiskCache *diskCache = [[YYDiskCache alloc] initWithPath:path inlineThreshold: 0];
     diskCache.customArchiveBlock = ^(id object) { return (NSData *)object; };
     diskCache.customUnarchiveBlock = ^(NSData *data) { return (id)data; };
     if (!memoryCache || !diskCache) return nil;
